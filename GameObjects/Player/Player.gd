@@ -18,7 +18,6 @@ func _ready():
 
 func _physics_process(delta):
 	direction = Vector2()
-	#if Input.is_action_pressed("Jump"):
 		
 	if Input.is_action_pressed("move_r"):
 		 direction.x += 1 
@@ -29,7 +28,7 @@ func _physics_process(delta):
 	if Input.is_action_pressed("move_b"):
 		direction.y += 1
 	
-	direction = direction.normalized() * Speed
-	direction = direction
+	direction = direction.normalized() 
+	direction = direction * Speed
 	
 	direction = move_and_slide(direction)
