@@ -3,8 +3,7 @@ extends KinematicBody2D
 
 var bullet = preload("res://GameObjects/Enemy/Bullet.tscn")
 var bullet_startPosition = Vector2()
-export (NodePath) var rotator
-onready var rotator_node = get_node(rotator)
+onready var rotator_node = get_node("rotator")
 onready var timer = get_node("BulletSpawnDelay")
 
 
