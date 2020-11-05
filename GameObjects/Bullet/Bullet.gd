@@ -9,6 +9,7 @@ var speed = 500
 onready var timer = get_node("SelfDestroyDelay")
 var target = "Player"
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	timer.set_wait_time(10)

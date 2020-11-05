@@ -9,6 +9,7 @@ onready var rotator_node = get_node("rotator")
 onready var timer = get_node("BulletSpawnDelay")
 var can_fire = false
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	timer.set_wait_time(fire_delay)

@@ -20,7 +20,7 @@ func _ready():
 func _process(delta):
 	if active_node == get_node("Stage"):	
 		if stages == 0: 
-			_wait(3.0)
+			_wait(1.0)
 		elif stages == 1: 
 			_wait(5.0)
 			if ai_target_node.can_fire == true:
@@ -28,6 +28,8 @@ func _process(delta):
 		elif stages == 2: 
 			_wait(1.0)
 			ai_target_node._spawn_bullet_rotation()
+		elif stages == 3: 
+			_wait(3.0)
 
 
 func _wait(wait_time):
@@ -40,7 +42,7 @@ func _wait(wait_time):
 func _on_BehaviourExecutionTimer_timeout():
 	can_trigger = true
 	stages +=1
-	if stages > 2:
+	if stages > 3:
 		stages = 0
 
 	
