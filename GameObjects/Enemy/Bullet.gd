@@ -5,7 +5,7 @@ extends Node2D
 # var a = 2
 # var b = "text"
 var dir = Vector2(1,0)
-var speed = 400
+var speed = 500
 onready var timer = get_node("SelfDestroyDelay")
 var target = "Player"
 
@@ -26,7 +26,7 @@ func _physics_process(delta):
 
 func _on_Area2D_body_entered(body):
 	if body.name == target:
-		print(target + " hit")
+		body.health -= 20
 		get_tree().queue_delete(self)
 
 

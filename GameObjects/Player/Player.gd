@@ -5,12 +5,15 @@ extends KinematicBody2D
 # var a = 2
 # var b = "text"
 export var Speed = 300.0
-export var fire_delay = 0.2
+export var fire_delay = 0.1
+export var health = 100
+
 var direction = Vector2()
 onready var rotator_node = get_node("rotator")
 onready var timer = get_node("ShootingTimer")
 var bullet = preload("res://GameObjects/Enemy/Bullet.tscn")
 var can_shoot = true
+
 
 
 # Called when the node enters the scene tree for the first time.
@@ -28,6 +31,7 @@ func _physics_process(delta):
 	direction = Vector2()
 	rotator_node.position = self.position
 	
+	_calculate_health()
 
 	if Input.is_action_pressed("move_r"):
 		 direction.x += 1 
@@ -55,6 +59,9 @@ func _shoot():
 	can_shoot = false
 	timer.start()
 
+func _calculate_health():
+	if(!health > 0):
+		get_tree().queue_delete(self)
 
 func _on_ShootingTimer_timeout():
 	can_shoot = true
