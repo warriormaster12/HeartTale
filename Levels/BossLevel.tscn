@@ -11,3 +11,4 @@ position = Vector2( 524, 500 )
 [node name="Enemy" parent="." instance=ExtResource( 2 )]
 position = Vector2( 520, 203 )
 fire_delay = 0.6
+health = 100
