@@ -6,6 +6,8 @@ extends Node2D
 # var b = "text"
 var dir = Vector2(1,0)
 var speed = 500
+export (NodePath) var sfx_audio_source 
+onready var sfx_audio_source_node = get_node(sfx_audio_source) 
 onready var timer = get_node("SelfDestroyDelay")
 var target = "Player"
 
@@ -23,12 +25,15 @@ func _ready():
 func _physics_process(delta):
 	self.position += dir.rotated(self.rotation) * speed * delta
 	
+	
 
 
 func _on_Area2D_body_entered(body):
 	if body.name == target:
+		sfx_audio_source_node.play()
 		body.health -= 20
-		get_tree().queue_delete(self)
+		self.visible = false
+			
 
 
 	

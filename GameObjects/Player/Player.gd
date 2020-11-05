@@ -7,10 +7,12 @@ extends KinematicBody2D
 export var Speed = 300.0
 export var fire_delay = 0.1
 export var health = 100
+export (NodePath) var sfx_audio_source 
 
 var direction = Vector2()
 onready var rotator_node = get_node("rotator")
 onready var timer = get_node("ShootingTimer")
+onready var sfx_audio_source_node = get_node(sfx_audio_source) 
 var bullet = preload("res://GameObjects/Bullet/Bullet.tscn")
 var can_shoot = true
 
@@ -58,6 +60,7 @@ func _shoot():
 	get_parent().add_child(bullet_instance)
 	can_shoot = false
 	timer.start()
+	sfx_audio_source_node.play()
 
 func _calculate_health():
 	if(!health > 0):
