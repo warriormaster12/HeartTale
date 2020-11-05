@@ -7,6 +7,7 @@ extends Node2D
 var dir = Vector2(1,0)
 var speed = 400
 onready var timer = get_node("SelfDestroyDelay")
+var target = "Player"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -24,9 +25,9 @@ func _physics_process(delta):
 
 
 func _on_Area2D_body_entered(body):
-	if body.name == "Player":
-		print("Hit")
-		#get_tree().queue_delete(self)
+	if body.name == target:
+		print(target + " hit")
+		get_tree().queue_delete(self)
 
 
 	

@@ -47,6 +47,7 @@ func _physics_process(delta):
 
 func _shoot():
 	var bullet_instance = bullet.instance()
+	bullet_instance.target = "Enemy"
 	var bullet_rotation = get_angle_to(get_global_mouse_position()) + rotator_node.get_rotation()
 	bullet_instance.position = rotator_node.position
 	bullet_instance.rotation = bullet_rotation
