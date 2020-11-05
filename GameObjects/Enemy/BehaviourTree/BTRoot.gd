@@ -30,6 +30,10 @@ func _process(delta):
 			ai_target_node._spawn_bullet_rotation()
 		elif stages == 3: 
 			_wait(3.0)
+		elif stages == 4: 
+			_wait(5.0)
+			ai_target_node._shoot_laser()
+			_wait(1.0)
 
 
 func _wait(wait_time):
@@ -42,7 +46,7 @@ func _wait(wait_time):
 func _on_BehaviourExecutionTimer_timeout():
 	can_trigger = true
 	stages +=1
-	if stages > 3:
+	if stages > 4:
 		stages = 0
 
 	
