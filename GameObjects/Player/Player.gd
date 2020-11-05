@@ -11,7 +11,7 @@ export var health = 100
 var direction = Vector2()
 onready var rotator_node = get_node("rotator")
 onready var timer = get_node("ShootingTimer")
-var bullet = preload("res://GameObjects/Enemy/Bullet.tscn")
+var bullet = preload("res://GameObjects/Bullet/Bullet.tscn")
 var can_shoot = true
 
 

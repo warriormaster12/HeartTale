@@ -1,13 +1,13 @@
 extends KinematicBody2D
 
 
-var bullet = preload("res://GameObjects/Enemy/Bullet.tscn")
+var bullet = preload("res://GameObjects/Bullet/Bullet.tscn")
 var bullet_startPosition = Vector2()
 export var fire_delay = 0.8
 export var health = 100
 onready var rotator_node = get_node("rotator")
 onready var timer = get_node("BulletSpawnDelay")
-
+var can_fire = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -22,6 +22,7 @@ func _ready():
 
 func _physics_process(delta):
 	_calculate_health()
+	
 
 
 func _spawn_bullet_rotation():
@@ -32,6 +33,7 @@ func _spawn_bullet_rotation():
 	get_parent().add_child(bullet_instance)
 
 func _spawn_bullets_at_once():
+	can_fire = false
 	var bullet_instances = []
 	var bullet_rotation = []
 	var rotation_interval = rand_range(24, 15)
@@ -53,5 +55,5 @@ func _calculate_health():
 		get_tree().queue_delete(self)
 
 func _on_Timer_timeout():
-	_spawn_bullets_at_once()
+	can_fire = true
 	
