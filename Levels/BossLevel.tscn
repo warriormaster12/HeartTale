@@ -13,7 +13,6 @@ position = Vector2( 512, 500 )
 position = Vector2( 512, 300 )
 fire_delay = 0.6
 health = 100
-target = NodePath("../Player")
 
 [node name="CustomCamera" parent="." instance=ExtResource( 3 )]
 position = Vector2( 512, 300 )

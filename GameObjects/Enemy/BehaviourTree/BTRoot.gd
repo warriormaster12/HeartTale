@@ -33,7 +33,11 @@ func _process(delta):
 		elif stages == 4: 
 			_wait(5.0)
 			ai_target_node._shoot_laser()
-			_wait(1.0)
+			_wait(5.0)
+			_wait(5.0)
+			for i in range(0, 1):
+				ai_target_node._shoot_laser()
+				_wait(1.0)
 
 
 func _wait(wait_time):

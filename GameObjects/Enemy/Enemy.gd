@@ -5,8 +5,6 @@ var bullet = preload("res://GameObjects/Bullet/Bullet.tscn")
 var bullet_startPosition = Vector2()
 export var fire_delay = 0.8
 export var health = 100
-export (NodePath) var target
-onready var target_node = get_node(target)
 onready var rotator_node = get_node("rotator")
 onready var timer = get_node("BulletSpawnDelay")
 var can_fire = false
@@ -37,9 +35,9 @@ func _spawn_bullet_rotation():
 
 func _shoot_laser():
 	var bullet_instance = bullet.instance()
-	var bullet_rotation = get_angle_to(target_node.get_global_position()) + rotator_node.get_rotation()
+	rotator_node.rotate(0.02)
 	bullet_instance.position = rotator_node.position
-	bullet_instance.rotation = bullet_rotation
+	bullet_instance.rotation = rotator_node.rotation
 	get_parent().add_child(bullet_instance)
 
 func _spawn_bullets_at_once():
