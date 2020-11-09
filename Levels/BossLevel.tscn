@@ -12,8 +12,18 @@ position = Vector2( 512, 500 )
 [node name="Enemy" parent="." instance=ExtResource( 2 )]
 position = Vector2( 512, 300 )
 fire_delay = 0.6
-health = 100
+health = 5000
+targets = [ NodePath("../Target"), NodePath("../Target2"), NodePath("../Target3") ]
 
 [node name="CustomCamera" parent="." instance=ExtResource( 3 )]
 position = Vector2( 512, 300 )
 current = true
+
+[node name="Target" type="Node2D" parent="."]
+position = Vector2( 100, 400 )
+
+[node name="Target2" type="Node2D" parent="."]
+position = Vector2( 955.599, 121.4 )
+
+[node name="Target3" type="Node2D" parent="."]
+position = Vector2( 1029.14, 548.492 )

@@ -4,19 +4,26 @@ extends KinematicBody2D
 var bullet = preload("res://GameObjects/Bullet/Bullet.tscn")
 var bullet_startPosition = Vector2()
 export var fire_delay = 0.8
-export var health = 100
+export var health = 5000
+export(Array, NodePath) var targets
 export (NodePath) var sfx_audio_source 
+
 onready var rotator_node = get_node("rotator")
 onready var timer = get_node("BulletSpawnDelay")
+onready var MovementTimer = get_node("MovementTime")
 onready var sfx_audio_source_node = get_node(sfx_audio_source) 
 var can_fire = false
+var new_pos
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	timer.set_wait_time(fire_delay)
 	timer.start()
+	MovementTimer.set_wait_time(3.0)
+	MovementTimer.start()
 	rotator_node.position = self.position
+	_calculate_position()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -25,6 +32,7 @@ func _ready():
 
 func _physics_process(delta):
 	_calculate_health()
+	_move(delta)
 	
 
 
@@ -66,7 +74,20 @@ func _spawn_bullets_at_once():
 func _calculate_health():
 	if(!health > 0):
 		get_tree().queue_delete(self)
+func _calculate_position():
+	var current_target = get_node(targets[rand_range(0, targets.size()-1)])
+	new_pos = current_target.position
+	
+func _move(delta):
+	rotator_node.position = self.position
+	var t = 0
+	t += delta * 1.0
+	self.position = self.position.linear_interpolate(new_pos, t)
 
 func _on_Timer_timeout():
 	can_fire = true
 	
+
+
+func _on_MovementTime_timeout():
+	_calculate_position()
