@@ -34,7 +34,12 @@ func _process(delta):
 			_wait(5.0)
 			ai_target_node._shoot_laser()
 			_wait(5.0)
-			
+		elif stages == 5:
+			ai_target_node.can_move = true
+			print(ai_target_node.can_move)
+			if ai_target_node.can_move == false:
+				_wait(5.0)
+				print("next stage")
 
 
 func _wait(wait_time):
@@ -47,7 +52,7 @@ func _wait(wait_time):
 func _on_BehaviourExecutionTimer_timeout():
 	can_trigger = true
 	stages +=1
-	if stages > 4:
+	if stages > 5:
 		stages = 0
 
 	
