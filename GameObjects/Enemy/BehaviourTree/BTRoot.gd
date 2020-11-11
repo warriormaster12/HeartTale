@@ -29,20 +29,20 @@ func _process(delta):
 				ai_target_node._spawn_bullets_at_once()
 		elif stages == 2: 
 			_wait(1.0)
-			ai_target_node._spawn_bullet_rotation()
+			ai_target_node._spawn_bullet_rotation(delta)
 		elif stages == 3: 
 			_wait(3.0)
 		elif stages == 4: 
 			_wait(5.0)
-			ai_target_node._shoot_laser()
+			ai_target_node._shoot_laser(delta)
 			_wait(5.0)
 		elif stages == 5:
 			if do_once == true:
 				do_once = false
 				ai_target_node.can_move = true
-			print(ai_target_node.can_move)
+			
 			if ai_target_node.can_move == false:
-				_wait(5.0)
+				_wait(2.5)
 				
 
 

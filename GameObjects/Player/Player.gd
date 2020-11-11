@@ -10,6 +10,7 @@ export var health = 100
 export (NodePath) var sfx_audio_source 
 
 var direction = Vector2()
+var velocity = Vector2()
 onready var rotator_node = get_node("rotator")
 onready var timer = get_node("ShootingTimer")
 onready var sfx_audio_source_node = get_node(sfx_audio_source) 
@@ -47,9 +48,9 @@ func _physics_process(delta):
 		_shoot()
 	
 	direction = direction.normalized() 
-	direction = direction * Speed
+	velocity = direction * Speed * delta
 	
-	direction = move_and_slide(direction)
+	move_and_collide(velocity)
 
 func _shoot():
 	var bullet_instance = bullet.instance()

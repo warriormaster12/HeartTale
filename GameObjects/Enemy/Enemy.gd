@@ -7,6 +7,7 @@ export var fire_delay = 0.8
 export var health = 5000
 export(Array, NodePath) var targets
 export (NodePath) var sfx_audio_source 
+export (float) var speed = 3.0
 
 onready var rotator_node = get_node("rotator")
 onready var timer = get_node("BulletSpawnDelay")
@@ -42,21 +43,23 @@ func _physics_process(delta):
 	
 	_calculate_health()
 	_calculate_position(delta)
+	print(rotator_node.rotation_degrees )
 	
 	
 
 
-func _spawn_bullet_rotation():
-	rotator_node.rotate(1)
+func _spawn_bullet_rotation(delta):
+	rotator_node.rotation_degrees += 10 * delta
+	#rotator_node.rotate(200 * delta)
 	var bullet_instance = bullet.instance()
 	bullet_instance.position = rotator_node.position
 	bullet_instance.rotation = rotator_node.rotation
 	get_parent().add_child(bullet_instance)
 	sfx_audio_source_node.play()
 
-func _shoot_laser():
+func _shoot_laser(delta):
 	var bullet_instance = bullet.instance()
-	rotator_node.rotate(0.02)
+	rotator_node.rotate(1.3 * delta)
 	bullet_instance.position = rotator_node.position
 	bullet_instance.rotation = rotator_node.rotation
 	get_parent().add_child(bullet_instance)
@@ -88,7 +91,7 @@ func _calculate_position(delta):
 	var distance = current_target.position - self.position
 	new_pos = current_target.position
 	if move_count < 10 && can_move == true:
-		if(distance.length() > 300):
+		if(distance.length() > 100):
 			_move(delta)
 		else: 
 			move_count +=1
@@ -105,7 +108,7 @@ func _calculate_position(delta):
 func _move(delta):
 	rotator_node.position = self.position
 	var t = 0
-	t += delta * 1.0
+	t += delta * speed
 	self.position = self.position.linear_interpolate(new_pos, t)
 
 func _on_Timer_timeout():

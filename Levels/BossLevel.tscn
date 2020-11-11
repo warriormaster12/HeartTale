@@ -8,22 +8,26 @@
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 512, 500 )
+Speed = 400.0
 
 [node name="Enemy" parent="." instance=ExtResource( 2 )]
 position = Vector2( 512, 300 )
 fire_delay = 0.6
 health = 5000
-targets = [ NodePath("../Target"), NodePath("../Target2"), NodePath("../Target3") ]
+targets = [ NodePath("../Target"), NodePath("../Target2"), NodePath("../Target3"), NodePath("../Target4") ]
 
 [node name="CustomCamera" parent="." instance=ExtResource( 3 )]
 position = Vector2( 512, 300 )
 current = true
 
 [node name="Target" type="Node2D" parent="."]
-position = Vector2( 100, 400 )
+position = Vector2( -62.1436, 291.31 )
 
 [node name="Target2" type="Node2D" parent="."]
-position = Vector2( 955.599, 121.4 )
+position = Vector2( 513.713, 623.867 )
 
 [node name="Target3" type="Node2D" parent="."]
-position = Vector2( 1029.14, 548.492 )
+position = Vector2( 1087.94, 295.477 )
+
+[node name="Target4" type="Node2D" parent="."]
+position = Vector2( 506.25, -2.68622 )
