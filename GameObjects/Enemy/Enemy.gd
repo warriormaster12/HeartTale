@@ -25,8 +25,6 @@ var move_count = 0
 func _ready():
 	timer.set_wait_time(fire_delay)
 	timer.start()
-	#MovementTimer.set_wait_time(3.0)
-	#MovementTimer.start()
 	rotator_node.position = self.position
 	
 	if do_once == true:
@@ -43,14 +41,14 @@ func _physics_process(delta):
 	
 	_calculate_health()
 	_calculate_position(delta)
-	print(rotator_node.rotation_degrees )
+	
 	
 	
 
 
 func _spawn_bullet_rotation(delta):
-	rotator_node.rotation_degrees += 10 * delta
-	#rotator_node.rotate(200 * delta)
+	var speed = 50
+	rotator_node.rotate(speed * delta)
 	var bullet_instance = bullet.instance()
 	bullet_instance.position = rotator_node.position
 	bullet_instance.rotation = rotator_node.rotation
@@ -59,7 +57,8 @@ func _spawn_bullet_rotation(delta):
 
 func _shoot_laser(delta):
 	var bullet_instance = bullet.instance()
-	rotator_node.rotate(1.3 * delta)
+	var speed = 1
+	rotator_node.rotate(speed * delta)
 	bullet_instance.position = rotator_node.position
 	bullet_instance.rotation = rotator_node.rotation
 	get_parent().add_child(bullet_instance)
