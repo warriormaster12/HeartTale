@@ -41,8 +41,7 @@ func _physics_process(delta):
 	
 	
 	_calculate_health()
-	if can_move == true:
-		_calculate_position(delta)
+	_calculate_position(delta)
 	
 	
 
@@ -88,16 +87,18 @@ func _calculate_health():
 func _calculate_position(delta):
 	var distance = current_target.position - self.position
 	new_pos = current_target.position
-	if move_count < 10:
+	if move_count < 10 && can_move == true:
 		if(distance.length() > 300):
 			_move(delta)
 		else: 
 			move_count +=1
 			current_target = get_node(targets[rand_range(0, targets.size())])
 	else: 
-		can_move = false
 		new_pos = starting_position
 		_move(delta)
+		move_count = 0
+		can_move = false
+		
 		
 		
 	

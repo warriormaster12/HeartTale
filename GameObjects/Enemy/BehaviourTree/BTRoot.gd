@@ -7,6 +7,7 @@ onready var active_node = get_node("Stage")
 onready var timer = get_node("BehaviourExecutionTimer")
 var can_trigger = true
 var stages = 0
+var do_once = true
 
 
 # Called when the node enters the scene tree for the first time.
@@ -20,6 +21,7 @@ func _ready():
 func _process(delta):
 	if active_node == get_node("Stage"):	
 		if stages == 0: 
+			do_once = true
 			_wait(1.0)
 		elif stages == 1: 
 			_wait(5.0)
@@ -35,11 +37,13 @@ func _process(delta):
 			ai_target_node._shoot_laser()
 			_wait(5.0)
 		elif stages == 5:
-			ai_target_node.can_move = true
+			if do_once == true:
+				do_once = false
+				ai_target_node.can_move = true
 			print(ai_target_node.can_move)
 			if ai_target_node.can_move == false:
 				_wait(5.0)
-				print("next stage")
+				
 
 
 func _wait(wait_time):
