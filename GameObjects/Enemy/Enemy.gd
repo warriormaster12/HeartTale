@@ -64,7 +64,7 @@ func _shoot_laser(delta):
 	get_parent().add_child(bullet_instance)
 	sfx_audio_source_node.play()
 
-func _spawn_bullets_at_once():
+func _spawn_bullets_at_once(delta):
 	can_fire = false
 	var bullet_instances = []
 	var bullet_rotation = []
@@ -76,7 +76,7 @@ func _spawn_bullets_at_once():
 		result += rotation_interval
 		bullet_rotation.push_back(result)
 		bullet_instances.push_back(bullet.instance())
-		rotator_node.rotate(bullet_rotation[i])
+		rotator_node.rotate(bullet_rotation[i] * delta)
 		bullet_instances[i].position = rotator_node.position
 		bullet_instances[i].rotation = rotator_node.rotation
 		get_parent().add_child(bullet_instances[i])

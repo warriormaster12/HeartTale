@@ -46,6 +46,8 @@ func _physics_process(delta):
 		direction.y += 1
 	if Input.is_action_pressed("fire") && can_shoot == true:
 		_shoot()
+	if Input.is_action_pressed("restart_game"):
+		get_tree().reload_current_scene()
 	
 	direction = direction.normalized() 
 	velocity = direction * Speed * delta

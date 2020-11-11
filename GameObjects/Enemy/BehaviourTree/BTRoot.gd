@@ -26,7 +26,7 @@ func _physics_process(delta):
 		elif stages == 1: 
 			_wait(5.0)
 			if ai_target_node.can_fire == true:
-				ai_target_node._spawn_bullets_at_once()
+				ai_target_node._spawn_bullets_at_once(delta)
 		elif stages == 2: 
 			_wait(1.0)
 			ai_target_node._spawn_bullet_rotation(delta)
