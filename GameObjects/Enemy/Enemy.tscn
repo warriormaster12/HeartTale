@@ -1,12 +1,16 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://GameObjects/Enemy/BehaviourTree/BTRoot.tscn" type="PackedScene" id=2]
 [ext_resource path="res://GameObjects/Enemy/Enemy.gd" type="Script" id=3]
 [ext_resource path="res://Sound/SFX/HeartShoot.wav" type="AudioStream" id=4]
+[ext_resource path="res://GameObjects/HealthBar/HealthBar.tscn" type="PackedScene" id=5]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 34.0643
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 1, 0, 0, 1 )
 
 [node name="Enemy" type="KinematicBody2D"]
 script = ExtResource( 3 )
@@ -17,7 +21,7 @@ sfx_audio_source = NodePath("SFX")
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
-modulate = Color( 1, 0.00784314, 0.00784314, 1 )
+modulate = Color( 0.917647, 0, 0, 1 )
 scale = Vector2( 0.8, 0.8 )
 texture = ExtResource( 1 )
 
@@ -31,4 +35,12 @@ ai_target = NodePath("..")
 [node name="SFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 4 )
 bus = "SFX"
+
+[node name="HealthBar" parent="." instance=ExtResource( 5 )]
+margin_left = -99.2126
+margin_top = -52.3842
+margin_right = 100.787
+margin_bottom = -31.4933
+custom_styles/fg = SubResource( 2 )
+target = NodePath("..")
 [connection signal="timeout" from="BulletSpawnDelay" to="." method="_on_Timer_timeout"]

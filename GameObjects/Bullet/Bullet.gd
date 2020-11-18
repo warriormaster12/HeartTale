@@ -32,7 +32,7 @@ func _physics_process(delta):
 func _on_Area2D_body_entered(body):
 	if body.name == target:
 		sfx_audio_source_node.play()
-		if body.get("god_mode") == false:
+		if !body.get("god_mode") or body.get("god_mode") == false:
 			body.health -= damage
 		self.visible = false
 			

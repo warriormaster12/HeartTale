@@ -1,9 +1,44 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://GameObjects/Camera/CameraShake.gd" type="Script" id=1]
+[ext_resource path="res://GameObjects/Camera/Timer.gd" type="Script" id=2]
 
 [node name="CustomCamera" type="Camera2D"]
 script = ExtResource( 1 )
 
 [node name="ShakeTime" type="Timer" parent="."]
+
+[node name="FightTimer" type="HBoxContainer" parent="."]
+margin_left = -635.678
+margin_top = -358.099
+margin_right = -594.678
+margin_bottom = -331.099
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Minutes" type="Label" parent="FightTimer"]
+margin_top = 6.0
+margin_right = 8.0
+margin_bottom = 20.0
+text = "1"
+
+[node name="ForwardSlash" type="Label" parent="FightTimer"]
+margin_left = 12.0
+margin_top = 6.0
+margin_right = 17.0
+margin_bottom = 20.0
+text = "/"
+
+[node name="Seconds" type="Label" parent="FightTimer"]
+margin_left = 21.0
+margin_top = 6.0
+margin_right = 41.0
+margin_bottom = 20.0
+text = "0.0"
+
+[node name="Timer" type="Timer" parent="FightTimer"]
+autostart = true
 [connection signal="timeout" from="ShakeTime" to="." method="_on_ShakeTime_timeout"]
+[connection signal="timeout" from="FightTimer/Timer" to="FightTimer" method="_on_Timer_timeout"]

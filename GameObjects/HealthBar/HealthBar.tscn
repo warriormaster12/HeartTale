@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://GameObjects/HealthBar/HealthBar.gd" type="Script" id=1]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.0862745, 0.588235, 0, 1 )
+border_color = Color( 0.917647, 0.866667, 0.866667, 1 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.211765, 0.211765, 0.211765, 0.368627 )
+
+[node name="HealthBar" type="ProgressBar"]
+margin_left = -94.4941
+margin_top = -8.81946
+margin_right = 105.505
+margin_bottom = 12.0714
+grow_horizontal = 0
+custom_styles/fg = SubResource( 1 )
+custom_styles/bg = SubResource( 2 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

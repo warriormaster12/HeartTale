@@ -12,6 +12,11 @@ export (float) var speed = 3.0
 onready var rotator_node = get_node("rotator")
 onready var timer = get_node("BulletSpawnDelay")
 onready var sfx_audio_source_node = get_node(sfx_audio_source) 
+
+onready var starting_color = $Sprite.modulate
+var grey_color = Color(0.5,0.5,0.5)
+
+
 var can_fire = false
 var new_pos
 var can_move = false
@@ -27,6 +32,7 @@ func _ready():
 	timer.set_wait_time(fire_delay)
 	timer.start()
 	rotator_node.position = self.position
+
 	
 	if do_once == true:
 		current_target = get_node(targets[rand_range(0, targets.size())])
@@ -38,10 +44,12 @@ func _ready():
 #	pass
 
 func _physics_process(delta):
-	
-	print(health)
 	_calculate_health()
 	_calculate_position(delta)
+	if(god_mode == true):
+		$Sprite.modulate = grey_color
+	else:
+		$Sprite.modulate = starting_color
 	
 	
 	

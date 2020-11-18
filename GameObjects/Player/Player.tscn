@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://GameObjects/Player/Player.gd" type="Script" id=2]
 [ext_resource path="res://Sound/SFX/Shoot.wav" type="AudioStream" id=3]
+[ext_resource path="res://GameObjects/HealthBar/HealthBar.tscn" type="PackedScene" id=4]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 29.7321
@@ -27,4 +28,11 @@ texture = ExtResource( 1 )
 stream = ExtResource( 3 )
 max_distance = 5000.0
 bus = "SFX"
+
+[node name="HealthBar" parent="." instance=ExtResource( 4 )]
+margin_left = -100.197
+margin_top = -46.8977
+margin_right = 99.8021
+margin_bottom = -26.0068
+target = NodePath("..")
 [connection signal="timeout" from="ShootingTimer" to="." method="_on_ShootingTimer_timeout"]
