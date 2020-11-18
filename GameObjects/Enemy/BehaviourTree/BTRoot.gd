@@ -34,9 +34,11 @@ func _physics_process(delta):
 			_wait(3.0)
 		elif stages == 4: 
 			_wait(5.0)
+			ai_target_node.god_mode = true
 			ai_target_node._shoot_laser(delta)
 			_wait(5.0)
 		elif stages == 5:
+			ai_target_node.god_mode = false
 			if do_once == true:
 				do_once = false
 				ai_target_node.can_move = true

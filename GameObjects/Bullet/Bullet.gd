@@ -10,6 +10,7 @@ export (NodePath) var sfx_audio_source
 onready var sfx_audio_source_node = get_node(sfx_audio_source) 
 onready var timer = get_node("SelfDestroyDelay")
 var target = "Player"
+var damage = 20.0
 
 
 # Called when the node enters the scene tree for the first time.
@@ -31,7 +32,8 @@ func _physics_process(delta):
 func _on_Area2D_body_entered(body):
 	if body.name == target:
 		sfx_audio_source_node.play()
-		body.health -= 20
+		if body.get("god_mode") == false:
+			body.health -= damage
 		self.visible = false
 			
 

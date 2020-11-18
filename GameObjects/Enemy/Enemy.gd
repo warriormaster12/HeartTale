@@ -16,6 +16,7 @@ var can_fire = false
 var new_pos
 var can_move = false
 var do_once = true
+var god_mode = false
 
 var current_target
 onready var starting_position = self.position
@@ -38,7 +39,7 @@ func _ready():
 
 func _physics_process(delta):
 	
-	
+	print(health)
 	_calculate_health()
 	_calculate_position(delta)
 	
