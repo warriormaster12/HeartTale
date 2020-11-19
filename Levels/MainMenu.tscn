@@ -1,0 +1,80 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Levels/MainMenu.gd" type="Script" id=2]
+
+[node name="MainMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -6.36395
+margin_top = 4.94977
+margin_right = -6.36401
+margin_bottom = 4.94977
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+load_level = "res://Levels/BossLevel.tscn"
+
+[node name="Menu" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -17.764
+margin_right = 60.0
+margin_bottom = 84.236
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Start game " type="Button" parent="Menu"]
+margin_top = 25.0
+margin_right = 80.0
+margin_bottom = 45.0
+text = "Start game"
+
+[node name="Label" type="Label" parent="Menu"]
+margin_top = 49.0
+margin_right = 80.0
+margin_bottom = 63.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Options" type="Button" parent="Menu"]
+margin_top = 67.0
+margin_right = 80.0
+margin_bottom = 87.0
+text = "Options"
+
+[node name="Label2" type="Label" parent="Menu"]
+margin_top = 91.0
+margin_right = 80.0
+margin_bottom = 105.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Credits" type="Button" parent="Menu"]
+margin_top = 109.0
+margin_right = 80.0
+margin_bottom = 129.0
+text = "Credits"
+
+[node name="Label3" type="Label" parent="Menu"]
+margin_top = 133.0
+margin_right = 80.0
+margin_bottom = 147.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Quit game" type="Button" parent="Menu"]
+margin_top = 151.0
+margin_right = 80.0
+margin_bottom = 171.0
+text = "Quit game"
+[connection signal="pressed" from="Menu/Start game " to="." method="_on_Start_game__pressed"]
+[connection signal="pressed" from="Menu/Quit game" to="." method="_on_Quit_game_pressed"]
