@@ -13,9 +13,10 @@ var target = "Player"
 var damage = 20.0
 
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	timer.set_wait_time(10)
+	timer.set_wait_time(6)
 	timer.start()
 
 
@@ -31,10 +32,14 @@ func _physics_process(delta):
 
 func _on_Area2D_body_entered(body):
 	if body.name == target:
+		if body.get("camera_node") != null:
+			body.camera_node._play_animation()
 		sfx_audio_source_node.play()
+		
 		if !body.get("god_mode") or body.get("god_mode") == false:
 			body.health -= damage
-		self.visible = false
+			$HitParticle._emit_particles()
+		$Sprite.visible = false
 			
 
 

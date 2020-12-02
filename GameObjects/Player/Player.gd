@@ -9,8 +9,13 @@ export var fire_delay = 0.1
 export var health = 100
 export (NodePath) var sfx_audio_source 
 
+export (NodePath) var camera 
+
+
 var direction = Vector2()
 var velocity = Vector2()
+
+onready var camera_node = get_node(camera)
 onready var rotator_node = get_node("rotator")
 onready var timer = get_node("ShootingTimer")
 onready var sfx_audio_source_node = get_node(sfx_audio_source) 

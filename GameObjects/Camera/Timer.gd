@@ -16,6 +16,9 @@ func _ready():
 #	pass
 
 func _physics_process(delta):
+	if get_tree().get_current_scene().get_node("Player") == null:
+		stop_timer = true
+		
 	if(stop_timer == false):
 		if(seconds > 59):
 			minutes+=1

@@ -30,51 +30,50 @@ __meta__ = {
 }
 
 [node name="Start game " type="Button" parent="Menu"]
-margin_top = 25.0
 margin_right = 80.0
-margin_bottom = 45.0
+margin_bottom = 20.0
 text = "Start game"
 
 [node name="Label" type="Label" parent="Menu"]
-margin_top = 49.0
+margin_top = 24.0
 margin_right = 80.0
-margin_bottom = 63.0
+margin_bottom = 38.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Options" type="Button" parent="Menu"]
-margin_top = 67.0
+margin_top = 42.0
 margin_right = 80.0
-margin_bottom = 87.0
+margin_bottom = 62.0
 text = "Options"
 
 [node name="Label2" type="Label" parent="Menu"]
-margin_top = 91.0
+margin_top = 66.0
 margin_right = 80.0
-margin_bottom = 105.0
+margin_bottom = 80.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Credits" type="Button" parent="Menu"]
-margin_top = 109.0
+margin_top = 84.0
 margin_right = 80.0
-margin_bottom = 129.0
+margin_bottom = 104.0
 text = "Credits"
 
 [node name="Label3" type="Label" parent="Menu"]
-margin_top = 133.0
+margin_top = 108.0
 margin_right = 80.0
-margin_bottom = 147.0
+margin_bottom = 122.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Quit game" type="Button" parent="Menu"]
-margin_top = 151.0
+margin_top = 126.0
 margin_right = 80.0
-margin_bottom = 171.0
+margin_bottom = 146.0
 text = "Quit game"
 [connection signal="pressed" from="Menu/Start game " to="." method="_on_Start_game__pressed"]
 [connection signal="pressed" from="Menu/Quit game" to="." method="_on_Quit_game_pressed"]
