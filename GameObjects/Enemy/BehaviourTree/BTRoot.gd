@@ -45,7 +45,11 @@ func _physics_process(delta):
 			
 			if ai_target_node.can_move == false:
 				_wait(2.5)
-				
+		elif stages == 6:
+			_wait(5.0)
+			ai_target_node.god_mode = true
+			if ai_target_node.god_mode == false:
+				_wait(5.0)
 
 
 func _wait(wait_time):
@@ -58,7 +62,7 @@ func _wait(wait_time):
 func _on_BehaviourExecutionTimer_timeout():
 	can_trigger = true
 	stages +=1
-	if stages > 5:
+	if stages > 6 and ai_target_node.god_mode == false:
 		stages = 0
 
 	

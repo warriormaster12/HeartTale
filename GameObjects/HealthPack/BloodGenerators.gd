@@ -1,4 +1,4 @@
-extends HBoxContainer
+extends Node2D
 
 
 # Declare member variables here. Examples:
@@ -8,12 +8,9 @@ extends HBoxContainer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	$Sprite/AnimationPlayer.play("Pulse")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
-	
-	
-func _physics_process(delta):
-	$Number.text = String(Engine.get_frames_per_second())
+#	pass

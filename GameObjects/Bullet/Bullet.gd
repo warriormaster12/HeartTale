@@ -40,7 +40,8 @@ func _on_Area2D_body_entered(body):
 			body.health -= damage
 			$HitParticle._emit_particles()
 		$Sprite.visible = false
-			
+	if body.name == "BloodGenerators":
+		body.queque_free()
 
 
 	
