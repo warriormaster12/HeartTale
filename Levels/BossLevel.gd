@@ -14,7 +14,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-
+	var generators = get_tree().get_nodes_in_group("BloodGenerators")
 	var camera_position = _get_camera_center()
 	if $Enemy != null:
 		if $Enemy.god_mode == true:
@@ -37,7 +37,8 @@ func _process(delta):
 					another_do_once = false
 		else: 
 			another_do_once = true
-				
+		if generators.size() == 0 and $Enemy/BTRoot.stages == 6:
+			$Enemy.god_mode = false
 
 func _get_camera_center():
 	var vtrans = get_canvas_transform()

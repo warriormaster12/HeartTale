@@ -31,17 +31,21 @@ func _physics_process(delta):
 
 
 func _on_Area2D_body_entered(body):
+	if body.is_in_group("BloodGenerators"):
+		body.health -= damage
+		$Sprite.visible = false
+		sfx_audio_source_node.play()
 	if body.name == target:
 		if body.get("camera_node") != null:
 			body.camera_node._play_animation()
-		sfx_audio_source_node.play()
+		
 		
 		if !body.get("god_mode") or body.get("god_mode") == false:
 			body.health -= damage
 			$HitParticle._emit_particles()
 		$Sprite.visible = false
-	if body.name == "BloodGenerators":
-		body.queque_free()
+		sfx_audio_source_node.play()
+	
 
 
 	
