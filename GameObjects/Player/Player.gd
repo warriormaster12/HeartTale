@@ -74,7 +74,7 @@ func _shoot():
 
 func _calculate_health():
 	if(!health > 0):
-		get_tree().queue_delete(self)
+		get_tree().reload_current_scene()
 
 func _on_ShootingTimer_timeout():
 	can_shoot = true

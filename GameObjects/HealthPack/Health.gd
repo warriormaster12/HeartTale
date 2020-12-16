@@ -18,6 +18,6 @@ func _ready():
 
 func _on_Area2D_body_entered(body):
 	if body.name == "Player":
-		if body.health != 300:
+		if body.health <= 300:
 			body.health += rand_range(25,100)
 			queue_free()

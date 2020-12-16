@@ -22,4 +22,4 @@ func _on_Timer_timeout():
 	var enemies = get_tree().get_nodes_in_group("Enemy")
 	for enemy in enemies:
 		if enemy.health != 3000:
-			enemy.health += 10
+			enemy.health += 40

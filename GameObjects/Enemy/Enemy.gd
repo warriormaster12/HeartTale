@@ -94,7 +94,7 @@ func _spawn_bullets_at_once(delta):
 	
 func _calculate_health():
 	if(!health > 0):
-		get_tree().queue_delete(self)
+		get_tree().change_scene("res://Levels/MainMenu.tscn")
 func _calculate_position(delta):
 	var distance = current_target.position - self.position
 	new_pos = current_target.position

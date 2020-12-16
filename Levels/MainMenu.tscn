@@ -46,6 +46,7 @@ __meta__ = {
 margin_top = 42.0
 margin_right = 80.0
 margin_bottom = 62.0
+disabled = true
 text = "Options"
 
 [node name="Label2" type="Label" parent="Menu"]
@@ -60,6 +61,7 @@ __meta__ = {
 margin_top = 84.0
 margin_right = 80.0
 margin_bottom = 104.0
+disabled = true
 text = "Credits"
 
 [node name="Label3" type="Label" parent="Menu"]

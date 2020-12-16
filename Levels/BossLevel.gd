@@ -35,9 +35,9 @@ func _process(delta):
 					generator.position = generator_pos
 					add_child(generator)
 					another_do_once = false
-		else: 
+			
+		if generators.size() == 0 and $Enemy/BTRoot.stages > 6:
 			another_do_once = true
-		if generators.size() == 0 and $Enemy/BTRoot.stages == 6:
 			$Enemy.god_mode = false
 
 func _get_camera_center():

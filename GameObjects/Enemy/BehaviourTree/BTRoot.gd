@@ -8,6 +8,7 @@ onready var timer = get_node("BehaviourExecutionTimer")
 var can_trigger = true
 var stages = 0
 var do_once = true
+var another_do_once = true
 
 
 # Called when the node enters the scene tree for the first time.
@@ -19,10 +20,11 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	print(stages)
 	if active_node == get_node("Stage"):	
 		if stages == 0: 
+			ai_target_node.god_mode = false
 			do_once = true
+			another_do_once = true
 			_wait(1.0)
 		elif stages == 1: 
 			_wait(5.0)
@@ -48,9 +50,11 @@ func _physics_process(delta):
 				_wait(2.5)
 		elif stages == 6:
 			_wait(5.0)
-			ai_target_node.god_mode = true
-			if ai_target_node.god_mode == false:
-				_wait(5.0)
+			if another_do_once == true:
+				ai_target_node.god_mode = true
+				another_do_once = false
+			#if ai_target_node.god_mode == false and another_do_once == false:
+			#	_wait(5.0)
 
 
 func _wait(wait_time):
@@ -63,7 +67,7 @@ func _wait(wait_time):
 func _on_BehaviourExecutionTimer_timeout():
 	can_trigger = true
 	stages +=1
-	if stages > 6 and ai_target_node.god_mode == false:
+	if stages > 6:
 		stages = 0
 
 	
